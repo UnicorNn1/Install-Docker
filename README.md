@@ -50,6 +50,35 @@ sudo systemctl status docker
 docker run hello-world
 ```
 ## This should download the hello-world image and run a container using that image, which will display a message and then exit. If this command completes successfully, it indicates that Docker is installed and working correctly on your system.
+# You can also install Docker with a different command
+## or Install Docker
+```bash
+sudo apt-get remove docker docker-engine docker.io containerd runc
+```
+```bash
+sudo apt-get update
+sudo apt-get install \
+ca-certificates \
+curl \
+gnupg
+```
+```bash
+sudo install -m 0755 -d /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+sudo chmod a+r /etc/apt/keyrings/docker.gpg
+```
+```bash
+echo \
+"deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+"$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
+sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt update && apt upgrade -y
+```
+```bash
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+```
+
+
 
 
 
